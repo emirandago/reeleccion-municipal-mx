@@ -1,0 +1,44 @@
+# ── Archivos de sistema y editor ──────────────────────────────────────────────
+.DS_Store
+**/.DS_Store
+.Rproj.user/
+.Rhistory
+.RData
+.Ruserdata
+*.Rproj.bak
+
+# ── Literatura (PDFs con derechos de autor — NO redistribuir) ─────────────────
+# Se documentan en docs/REFERENCES.md; cada quien obtiene los artículos por su cuenta.
+literatura/
+
+# ── Datos crudos pesados / no redistribuibles ─────────────────────────────────
+# La base seccional (233 MB) excede el límite de GitHub y pertenece a sus autores.
+# Ver data/raw/README.md para obtenerla (Calderón-Hernández et al. 2025).
+data/raw/all_states_almost.csv
+
+# ── Datos intermedios (se regeneran con scripts/01_limpieza.R) ────────────────
+data/clean/*
+# Excepción: covariable estructural que es INPUT (no se regenera).
+!data/clean/covariates_municipales.csv
+
+# ── Resultados intermedios (objetos .rds grandes; regenerables) ───────────────
+output/results/
+
+# ── Artefactos obsoletos del diseño anterior (regenerables; no versionar) ─────
+output/figures/rdplot_todas_control.pdf
+output/figures/rdplot_todas_post.pdf
+output/figures/rdplot_todas_pre.pdf
+output/figures/mccrary_densidad.pdf
+output/figures/mccrary_densidad_grupos.pdf
+output/session_info_01_limpieza.txt
+
+# ── Subproductos de compilación LaTeX (Overleaf/local) ────────────────────────
+*.aux
+*.log
+*.nav
+*.snm
+*.out
+*.toc
+*.synctex.gz
+*.fls
+*.fdb_latexmk

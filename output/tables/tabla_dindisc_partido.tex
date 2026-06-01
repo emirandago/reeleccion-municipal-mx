@@ -1,0 +1,19 @@
+% Tabla DinDisc por partido (doble diferencial, 4 discontinuidades)
+% Generado por 03_dindisc_partido.R
+\begin{tabular}{lccc}
+\toprule
+ & PRI & PAN & PRD \\
+\midrule
+$\hat{\tau}$ (mayor único) & -0.0045 & -0.3363 & -0.1834 \\
+ & (0.0476) & (0.0360) & (0.0373) \\
+\midrule
+$\hat{\tau}$ (partido puro) & 0.0817 & -0.3559$^{*}$ & -0.1762 \\
+ & (0.0726) & (0.0353) & (0.0356) \\
+\bottomrule
+\multicolumn{4}{p{0.9\textwidth}}{\footnotesize \textit{Nota:} $\hat{\tau}$ es el doble
+  diferencial sobre cuatro discontinuidades (coef.\ $D{:}POST{:}TR$ de la regresión
+  local-lineal saturada, kernel triangular, $h$ MSE-óptimo). SE clustered por estado;
+  $p$ por wild cluster bootstrap Rademacher ($B=9999$). Atribución: partido mayor único
+  (coaliciones con $\ge 2$ mayores excluidas; 1.5\% de las elecciones). $^{*}p<0.10$,
+  $^{**}p<0.05$, $^{***}p<0.01$.}
+\end{tabular}

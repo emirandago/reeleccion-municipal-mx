@@ -1,0 +1,20 @@
+% MORENA — discontinuidad de incumbencia post-reforma (NO efecto causal de la reforma)
+% Generado por 03b_dindisc_morena.R
+\begin{tabular}{lccc}
+\toprule
+Especificación & $\hat{\beta}$ (salto) & (SE) & $N$ \\
+\midrule
+MORENA, mayor único (todo) & -0.0501$^{**}$ & (0.0238) & 674 \\
+MORENA, mayor único (todo) & -0.0501$^{**}$ & (0.0238) & 512 \\
+\quad celda \textit{treated\_post} & -0.0485$^{*}$ & (0.0252) & 630 \\
+\quad celda \textit{treated\_post} & -0.0485$^{*}$ & (0.0252) & 487 \\
+MORENA puro (sin coalición) & -0.0316 & (0.0301) & 326 \\
+MORENA puro (sin coalición) & -0.0316 & (0.0301) & 389 \\
+\bottomrule
+\multicolumn{4}{p{0.9\textwidth}}{\footnotesize \textit{Nota:} discontinuidad de
+  incumbencia (RDD local-lineal, kernel triangular, $h$ MSE-óptimo, SE bias-corrected
+  conglomerados por estado). \textbf{No} es el efecto causal de la reforma: el doble
+  diferencial es inestimable para MORENA por carecer de observaciones pre-reforma.
+  $p$ de la celda \textit{treated\_post} por wild cluster bootstrap Rademacher.
+  $^{*}p<0.10$, $^{**}p<0.05$, $^{***}p<0.01$.}
+\end{tabular}

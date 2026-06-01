@@ -1,0 +1,695 @@
+% ══════════════════════════════════════════════════════════════════════════════
+% PREÁMBULO OFICIAL — Emiliano Miranda González / ITAM Ciencia Política
+% Versión 1.0 — Marzo 2026
+% ESTE ARCHIVO ES INMUTABLE. No modificar colores, fuentes, ni templates.
+% ══════════════════════════════════════════════════════════════════════════════
+
+\documentclass[
+  aspectratio=43,        % Relación 4:3 — estándar académico formal
+  t,                     % Alineación vertical: top (no centrado)
+  10pt                   % Tamaño base de fuente
+]{beamer}
+
+% ── TIPOGRAFÍA ────────────────────────────────────────────────────────────────
+\usepackage{lmodern}           % Latin Modern Roman — fuente principal, serif
+\usepackage[T1]{fontenc}       % Codificación de salida T1 (acentos correctos)
+\usepackage[utf8]{inputenc}    % Codificación de entrada UTF-8
+\usepackage{microtype}         % Mejoras de kerning y justificación
+
+% ── MATEMÁTICAS ──────────────────────────────────────────────────────────────
+\usepackage{amsmath}           % Entornos matemáticos avanzados
+\usepackage{amssymb}           % Símbolos matemáticos AMS
+\usepackage{bm}                % Negritas en modo matemático (\bm{x})
+\usepackage{mathtools}         % Extensión de amsmath
+
+% ── GRÁFICAS Y FIGURAS ───────────────────────────────────────────────────────
+\usepackage{graphicx}          % Inclusión de imágenes externas
+\usepackage{booktabs}          % Tablas académicas (\toprule, \midrule, \bottomrule)
+\usepackage{tabularx}          % Tablas con columnas de ancho variable
+\usepackage{multirow}          % Celdas que abarcan múltiples filas
+\usepackage{array}             % Mejoras en columnas de tablas
+
+% ── COLOR Y CAJAS ────────────────────────────────────────────────────────────
+\usepackage{xcolor}            % Sistema de colores extendido
+\usepackage{tcolorbox}         % Cajas de colores personalizadas
+\tcbuselibrary{skins, breakable}
+
+% ── TIKZ (para portada con rectángulo de color) ───────────────────────────────
+\usepackage{tikz}
+
+% ── LAYOUT Y UTILIDADES ──────────────────────────────────────────────────────
+\usepackage{multicol}          % Múltiples columnas
+\usepackage{appendixnumberbeamer} % Reinicia numeración en apéndice
+% NOTA: enumitem NO se carga — conflicto con beamer. Usar \setlength{\itemsep}
+% directamente o los templates de itemize de beamer.
+
+% ── HIPERENLACES (siempre al final del preámbulo) ────────────────────────────
+\usepackage{url}               % Formateo de URLs
+\usepackage{hyperref}          % Hipervínculos — SIEMPRE el último paquete
+
+% ══════════════════════════════════════════════════════════════════════════════
+% PALETA CROMÁTICA — NO MODIFICAR
+% ══════════════════════════════════════════════════════════════════════════════
+\definecolor{ITAMgreen}{HTML}{00563F}      % Sacramento State Green — primario
+\definecolor{ITAMmaroon}{HTML}{7B1113}     % UP Maroon — secundario/acento
+\definecolor{ITAMgray}{HTML}{4A4A4A}       % Gris oscuro — texto secundario
+\definecolor{ITAMlightgray}{HTML}{F2F2F2}  % Gris claro — fondos
+\definecolor{ITAMwhite}{HTML}{FFFFFF}      % Blanco puro
+\definecolor{blockbodybg}{HTML}{E8F0EC}    % Verde muy claro — fondo bloque primario
+\definecolor{examplebodybg}{HTML}{F5E8E8}  % Rojo muy claro — fondo bloque secundario
+
+% ══════════════════════════════════════════════════════════════════════════════
+% TEMA BEAMER — NO MODIFICAR
+% ══════════════════════════════════════════════════════════════════════════════
+\usetheme{default}
+\usecolortheme{default}
+\usefonttheme{serif}           % Latin Modern Roman en TODO el documento
+\usefonttheme{professionalfonts}
+\setbeamertemplate{navigation symbols}{}   % Eliminar botones de navegación
+
+% ── Colores de elementos ──────────────────────────────────────────────────────
+\setbeamercolor{title}{fg=ITAMwhite}
+\setbeamercolor{subtitle}{fg=ITAMwhite}
+\setbeamercolor{author}{fg=ITAMwhite}
+\setbeamercolor{institute}{fg=ITAMwhite}
+\setbeamercolor{date}{fg=ITAMwhite}
+
+\setbeamercolor{frametitle}{fg=ITAMgreen, bg=ITAMwhite}
+\setbeamercolor{framesubtitle}{fg=ITAMgray}
+\setbeamercolor{normal text}{fg=black, bg=ITAMwhite}
+\setbeamercolor{structure}{fg=ITAMgreen}
+
+\setbeamercolor{item}{fg=ITAMgreen}
+\setbeamercolor{subitem}{fg=ITAMgray}
+\setbeamercolor{subsubitem}{fg=ITAMgray}
+
+\setbeamercolor{block title}{fg=ITAMwhite, bg=ITAMgreen}
+\setbeamercolor{block body}{fg=black, bg=blockbodybg}
+
+\setbeamercolor{block title alerted}{fg=ITAMwhite, bg=ITAMmaroon}
+\setbeamercolor{block body alerted}{fg=black, bg=examplebodybg}
+
+\setbeamercolor{block title example}{fg=ITAMwhite, bg=ITAMmaroon}
+\setbeamercolor{block body example}{fg=black, bg=examplebodybg}
+
+\setbeamercolor{section in head/foot}{fg=ITAMgray, bg=ITAMlightgray}
+\setbeamercolor{page number in head/foot}{fg=ITAMgray, bg=ITAMlightgray}
+\setbeamercolor{section in head/foot shaded}{fg=ITAMgray!50, bg=ITAMlightgray}
+
+% ── Tamaños de fuente ─────────────────────────────────────────────────────────
+\setbeamerfont{title}{size=\Large, series=\bfseries}
+\setbeamerfont{subtitle}{size=\normalsize, series=\normalfont}
+\setbeamerfont{author}{size=\normalsize}
+\setbeamerfont{institute}{size=\small}
+\setbeamerfont{date}{size=\small}
+\setbeamerfont{frametitle}{size=\large, series=\normalfont}
+\setbeamerfont{framesubtitle}{size=\small}
+\setbeamerfont{block title}{size=\normalsize, series=\bfseries}
+\setbeamerfont{block body}{size=\small}
+\setbeamerfont{footline}{size=\tiny}
+
+% ── Template de título de frame con línea separadora ─────────────────────────
+\setbeamertemplate{frametitle}{%
+  \vspace{0.4em}
+  \textcolor{ITAMgreen}{\insertframetitle}%
+  \ifx\insertframesubtitle\@empty\else%
+    \\[0.1em]{\usebeamerfont{framesubtitle}\usebeamercolor[fg]{framesubtitle}\insertframesubtitle}%
+  \fi
+  \vspace{0.1em}
+  \textcolor{ITAMgreen}{\hrule height 0.4pt}%
+  \vspace{0.3em}
+}
+
+% ── Bullets ───────────────────────────────────────────────────────────────────
+\setbeamertemplate{itemize item}{\textcolor{ITAMgreen}{\textbullet}}
+\setbeamertemplate{itemize subitem}{\textcolor{ITAMgray}{\small\textbullet}}
+\setbeamertemplate{itemize subsubitem}{\textcolor{ITAMgray}{\tiny\textbullet}}
+\setbeamertemplate{enumerate item}{\textcolor{ITAMgreen}{\insertenumlabel.}}
+\setbeamertemplate{enumerate subitem}{\textcolor{ITAMgray}{\insertenumlabel.}}
+\setlength{\itemsep}{0.5em}
+
+% ── Pie de página con barra de secciones (estilo Gary King) ──────────────────
+\setbeamertemplate{footline}{%
+  \leavevmode%
+  \hbox{%
+    \begin{beamercolorbox}[wd=0.75\paperwidth, ht=2.25ex, dp=1ex, leftskip=1em]{section in head/foot}%
+      \usebeamerfont{footline}%
+      \insertsectionnavigationhorizontal{0.75\paperwidth}{}{}%
+    \end{beamercolorbox}%
+    \begin{beamercolorbox}[wd=0.25\paperwidth, ht=2.25ex, dp=1ex, rightskip=1em, right]{page number in head/foot}%
+      \usebeamerfont{footline}%
+      \insertframenumber{} / \inserttotalframenumber%
+    \end{beamercolorbox}%
+  }%
+  \vskip0pt%
+}
+
+% ── Portada con rectángulo de color (estilo Gary King / Lucardi) ──────────────
+% Portada con posicionamiento absoluto por nodos TikZ (versión robusta,
+% tomada del deck de referencia que compila correctamente).
+\setbeamertemplate{title page}{%
+  \begin{tikzpicture}[remember picture, overlay]
+    % Mitad superior verde — bloque del título
+    \fill[ITAMgreen]
+      ([yshift=0pt]current page.north west) rectangle
+      ([yshift=-0.5\paperheight]current page.north east);
+    % Título + subtítulo
+    \node[anchor=center, text width=0.86\paperwidth, align=center, text=ITAMwhite]
+      at ([yshift=-0.18\paperheight]current page.north) {%
+        \usebeamerfont{title}\inserttitle\par
+        \vspace{0.7em}
+        {\usebeamerfont{subtitle}\insertsubtitle}%
+      };
+    % Autor
+    \node[anchor=center, text width=0.86\paperwidth, align=center, text=ITAMwhite]
+      at ([yshift=-0.40\paperheight]current page.north) {%
+        \usebeamerfont{author}\insertauthor%
+      };
+    % Mitad inferior blanca — institución y fecha
+    \node[anchor=center, text width=0.86\paperwidth, align=center, text=black]
+      at ([yshift=-0.75\paperheight]current page.north) {%
+        \insertinstitute\par
+        \vspace{0.8em}
+        \insertdate%
+      };
+  \end{tikzpicture}%
+}
+
+% ══════════════════════════════════════════════════════════════════════════════
+% METADATOS — autor e institución (un solo autor)
+% ══════════════════════════════════════════════════════════════════════════════
+\author[E. Miranda]{Emiliano Miranda González}
+\institute[ITAM]{%
+  Instituto Tecnológico Autónomo de México\\
+  Departamento Académico de Ciencia Política\\[0.4em]
+  {\fontfamily{cmtt}\selectfont
+   \href{mailto:emiliano.miranda@itam.mx}{emiliano.miranda@itam.mx}}%
+}
+
+\title[Reelección e incumbencia]{El alcalde en el umbral}
+\subtitle{(Des)ventaja del partido incumbente en los municipios mexicanos}
+\date{%
+  Seminario de Tópicos de Políticas Públicas\\[0.2em]
+  \textit{Ciudad de México, mayo de 2026}%
+}
+
+% ══════════════════════════════════════════════════════════════════════════════
+% HYPERREF
+% ══════════════════════════════════════════════════════════════════════════════
+\hypersetup{
+  colorlinks  = true,
+  linkcolor   = ITAMgreen,
+  urlcolor    = ITAMgreen,
+  citecolor   = ITAMgray,
+  pdfauthor   = {Emiliano Miranda González},
+  pdftitle    = {El alcalde en el umbral: reeleccion e incumbencia municipal en Mexico},
+  pdfsubject  = {Ciencia Politica},
+  pdfkeywords = {ITAM, reeleccion, incumbente, RDD, diferencias en discontinuidades, Mexico},
+  pdfcreator  = {LaTeX/Beamer, Overleaf},
+  unicode     = true
+}
+
+% ══════════════════════════════════════════════════════════════════════════════
+\begin{document}
+% ══════════════════════════════════════════════════════════════════════════════
+
+% ── Portada ───────────────────────────────────────────────────────────────────
+{
+\setbeamertemplate{footline}{}
+\begin{frame}[plain, noframenumbering]
+  \titlepage
+\end{frame}
+}
+
+% ══════════════════════════════════════════════════════════════════════════════
+\section{Motivación y teoría}
+% ══════════════════════════════════════════════════════════════════════════════
+{
+\setbeamercolor{background canvas}{bg=ITAMlightgray}
+\begin{frame}[plain, noframenumbering]
+  \vfill
+  \begin{center}
+    \textcolor{ITAMgreen}{\Large\bfseries Motivación y teoría}\\[0.5em]
+    \textcolor{ITAMgray}{\normalsize De la ventaja del incumbente a su maldición}
+  \end{center}
+  \vfill
+\end{frame}
+}
+
+% ── 1.1 ───────────────────────────────────────────────────────────────────────
+\begin{frame}{La paradoja del incumbente}
+
+  \begin{itemize}
+    \item En las democracias consolidadas, gobernar confiere ventaja: Lee (2008)
+          estima cerca de \textcolor{ITAMgreen}{$+8$ puntos} de voto mediante un
+          \emph{close-election} RDD (EE.\,UU.)
+    \item En las democracias en desarrollo el hallazgo se invierte: gobernar
+          \textcolor{ITAMmaroon}{deprime} las perspectivas del partido
+    \item Klašnja y Titiunik (2017) lo llaman la \emph{maldición del incumbente}:
+          partidos débiles más límites de mandato anulan la rendición de cuentas
+    \item En México, Lucardi y Rosas (2016) estiman una desventaja de
+          \textcolor{ITAMmaroon}{23 a 29 puntos} en la probabilidad de retener
+  \end{itemize}
+
+  \vspace{0.4em}
+  \begin{block}{Pregunta de investigación}
+    \textit{¿Atenuó el restablecimiento de la reelección consecutiva municipal
+    (reforma de 2014) la desventaja del partido incumbente en México?}
+  \end{block}
+
+\end{frame}
+
+% ── 1.2 ───────────────────────────────────────────────────────────────────────
+\begin{frame}{Mecanismos: extracción de rentas y disciplina}
+
+  \begin{columns}[T]
+
+    \column{0.48\textwidth}
+    \textcolor{ITAMgreen}{Por qué la maldición}
+    \vspace{0.3em}
+    \begin{itemize}
+      \item Límite de mandato $\rightarrow$ horizonte corto $\rightarrow$ alcalde
+            \emph{lame duck}
+      \item Extracción de rentas (Klašnja 2015); el votante castiga al partido
+      \item Sanción de la corrupción revelada (Ferraz y Finan 2008)
+    \end{itemize}
+
+    \column{0.48\textwidth}
+    \textcolor{ITAMmaroon}{Qué predice la reforma}
+    \vspace{0.3em}
+    \begin{itemize}
+      \item Reelegibilidad $\rightarrow$ horizonte largo $\rightarrow$ disciplina
+      \item Magar (2026): la maldición se revierte cuando el alcalde busca
+            reelegirse (voto personal)
+      \item Pero ese efecto confunde institución y autoselección del candidato
+    \end{itemize}
+
+  \end{columns}
+
+  \vspace{0.6em}
+  {\footnotesize \textcolor{ITAMgray}{%
+    Lucardi y Rosas (2016) añaden la coordinación duvergeriana de opositores
+    en torno al segundo lugar de una elección cerrada.}}
+
+\end{frame}
+
+% ── 1.3 ───────────────────────────────────────────────────────────────────────
+\begin{frame}{La reforma de 2014 y la contrarreforma de 2030}
+
+  \begin{itemize}
+    \item Artículo 115 constitucional (2014): hasta dos periodos consecutivos
+          para alcaldes, tras \textcolor{ITAMgreen}{ocho décadas} de prohibición
+    \item \textcolor{ITAMgreen}{Adopción escalonada} por entidad: 22 estados en
+          2018, 3 en 2019, 2 en 2021; Hidalgo y Veracruz \emph{nunca} adoptaron
+    \item El objetivo causal es el efecto de la \emph{reelegibilidad como
+          institución} —la disponibilidad de la regla—, que ninguna estimación
+          ha aislado
+    \item Una \textcolor{ITAMmaroon}{contrarreforma} restituirá la prohibición
+          en 2030: saber si la regla restituyó la rendición de cuentas es
+          dirimente para entender qué se cede con ese retorno
+  \end{itemize}
+
+\end{frame}
+
+% ══════════════════════════════════════════════════════════════════════════════
+\section{Datos y diseño}
+% ══════════════════════════════════════════════════════════════════════════════
+{
+\setbeamercolor{background canvas}{bg=ITAMlightgray}
+\begin{frame}[plain, noframenumbering]
+  \vfill
+  \begin{center}
+    \textcolor{ITAMgreen}{\Large\bfseries Datos y diseño empírico}\\[0.5em]
+    \textcolor{ITAMgray}{\normalsize Diferencias en discontinuidades}
+  \end{center}
+  \vfill
+\end{frame}
+}
+
+% ── 2.1 ───────────────────────────────────────────────────────────────────────
+\begin{frame}{Datos y construcción del panel}
+
+  \begin{itemize}
+    \item Base seccional de Calderón-Hernández et al.\ (2025), versión extendida
+          a 2024: \textcolor{ITAMgreen}{551{,}882} observaciones de
+          sección-elección, 2{,}041 municipios
+    \item Calendario de adopción de Magar (2024) para la variación estado-año
+    \item Colapso a municipio-elección (conteos por suma, \emph{shares}
+          recalculados); panel apilado: dos filas por elección
+          (\emph{ganador} y \emph{segundo lugar})
+    \item Umbral $c = 0$ sobre el margen de victoria firmado; las exclusiones de
+          validez dejan \textcolor{ITAMgreen}{29 entidades, 1{,}952 municipios}
+  \end{itemize}
+
+  \vspace{0.3em}
+  {\footnotesize \textcolor{ITAMgray}{%
+    Variable dependiente: \texttt{outcome\_rdd}, la fracción de voto válido del
+    partido focal. Tratamiento: \texttt{reforma\_st}. Variable de asignación:
+    \texttt{margin\_signed}.}}
+
+\end{frame}
+
+% ── 2.2 — estimando ───────────────────────────────────────────────────────────
+\begin{frame}{El estimando: un doble diferencial}
+
+  \begin{itemize}
+    \item El RDD lee la (des)ventaja partidista como el \emph{salto} en $c=0$;
+          el componente de diferencias compara \emph{saltos}, no municipios
+    \item Cuatro celdas: tratados y control, antes y después de la reforma
+  \end{itemize}
+
+  \vspace{0.4em}
+  \[
+    \tau \;=\;
+    \underbrace{\big[\,\beta^{\text{post}}_{T}-\beta^{\text{pre}}_{T}\,\big]}_{\text{1.\textsuperscript{er} diferencial (tratados)}}
+    \;-\;
+    \underbrace{\big[\,\beta^{\text{post}}_{C}-\beta^{\text{pre}}_{C}\,\big]}_{\text{2.\textsuperscript{o} diferencial (control)}}
+  \]
+
+  \vspace{0.2em}
+  \begin{block}{Supuesto identificador (Grembi et al.\ 2016; Picchetti et al.\ 2026)}
+    \small La discontinuidad confundidora es estable en el tiempo; el segundo
+    diferencial neutraliza el choque común de 2018 (realineamiento de MORENA).
+  \end{block}
+
+\end{frame}
+
+% ── 2.3 — por qué este RDD ────────────────────────────────────────────────────
+\begin{frame}{¿Por qué esta variante de RDD?}
+
+  \begin{itemize}
+    \item Estimador de polinomio local (\emph{rdrobust}), orden lineal, ancho de
+          banda MSE-óptimo y corrección de sesgo robusta (Calonico, Cattaneo y
+          Titiunik 2014)
+    \item Se descarta el polinomio global de orden alto: ruidoso y de cobertura
+          deficiente (Gelman e Imbens 2019)
+    \item Se descarta la aleatorización local: el margen es cuasi-continuo y
+          denso en el umbral
+    \item Inferencia con \textcolor{ITAMgreen}{$\approx 29$ conglomerados}
+          estatales: \emph{wild cluster bootstrap} Rademacher (MacKinnon,
+          Nielsen y Webb 2023)
+  \end{itemize}
+
+  \vspace{0.3em}
+  {\footnotesize \textcolor{ITAMgray}{%
+    Validación: densidad de Cattaneo, Jansson y Ma (2020) por partido; balance
+    de covariables predeterminadas (Marshall 2024); robustez de ancho de banda.}}
+
+\end{frame}
+
+% ══════════════════════════════════════════════════════════════════════════════
+\section{Resultados}
+% ══════════════════════════════════════════════════════════════════════════════
+{
+\setbeamercolor{background canvas}{bg=ITAMlightgray}
+\begin{frame}[plain, noframenumbering]
+  \vfill
+  \begin{center}
+    \textcolor{ITAMgreen}{\Large\bfseries Resultados}\\[0.5em]
+    \textcolor{ITAMgray}{\normalsize Un cero impreciso, y por qué}
+  \end{center}
+  \vfill
+\end{frame}
+}
+
+% ── 3.1 — efecto agregado ─────────────────────────────────────────────────────
+\begin{frame}{El efecto agregado: indistinguible de cero e impreciso}
+
+  \begin{itemize}
+    \item El diseño \textcolor{ITAMgreen}{supera el balance}: ninguna covariable
+          predeterminada salta en el umbral
+    \item Doble diferencial agregado: $\hat{\tau} = 0.008$ ($\approx +0.9$
+          puntos), \emph{wild bootstrap} $p = 0.84$
+    \item Su intervalo de confianza abarca \textcolor{ITAMmaroon}{$[-0.34,\,
+          0.35]$}: $\pm 34$ puntos; sin precisión útil
+  \end{itemize}
+
+  \vspace{0.3em}
+  \begin{table}\centering\small
+    \begin{tabular}{lcc}
+      \toprule
+       & Pre-reforma & Post-reforma \\
+      \midrule
+      $\beta$: tratados            & $0.010\;(0.015)$ & $0.032\;(0.022)$ \\
+      $\beta$: control (HGO+VER)   & $0.035\;(0.043)$ & $0.072^{***}\;(0.022)$ \\
+      \midrule
+      $\hat{\tau}$ doble diferencial & \multicolumn{2}{c}{$0.008\;(0.034)$} \\
+      \bottomrule
+    \end{tabular}
+  \end{table}
+
+  \vspace{0.2em}
+  {\footnotesize \textcolor{ITAMgray}{%
+    RDD local-lineal, kernel triangular, $h$ MSE-óptimo; SE entre paréntesis.
+    $^{***}\,p<0.01$.}}
+
+\end{frame}
+
+% ── 3.2 — la causa de la imprecisión ──────────────────────────────────────────
+\begin{frame}{La imprecisión es estructural: dos estados de control}
+
+  \begin{itemize}
+    \item El segundo diferencial descansa sobre los \textcolor{ITAMmaroon}{dos
+          únicos} estados nunca tratados, Hidalgo y Veracruz
+    \item Sus celdas post-2018 tienen muy pocas contiendas cerradas (hasta
+          \textcolor{ITAMmaroon}{16} observaciones de un lado del umbral)
+    \item La discontinuidad de control queda casi sin identificar; los
+          estimadores por partido heredan esa imprecisión
+  \end{itemize}
+
+  \vspace{0.5em}
+  \begin{alertblock}{Lectura honesta}
+    \small Los $\hat{\tau}$ por partido tienen signo negativo y magnitud aparente
+    grande —PAN $-0.34$, PRD $-0.18$, PRI $-0.00$—, pero ninguno es significativo
+    y sus intervalos incluyen valores inverosímiles (el del PAN, hasta $-1.23$).
+    \emph{No} admiten lectura causal.
+  \end{alertblock}
+
+\end{frame}
+
+% ── 3.3 — lo informativo: la maldición por celda ──────────────────────────────
+\begin{frame}{Lo informativo: la maldición sí aparece por celda}
+
+  \begin{itemize}
+    \item Antes de la reforma, los tres partidos muestran desventaja del
+          incumbente en voto: PRI $-3.1$, PAN $-5.7$, PRD $-3.4$ puntos
+    \item Congruente en signo con Klašnja y Titiunik (2017) y Lucardi y Rosas
+          (2016)
+    \item El primer diferencial intra-tratados del PAN va de
+          \textcolor{ITAMgreen}{$-5.7$ a $+1.8$} puntos: atenuación compatible
+          con disciplina en un partido cohesionado
+    \item El PRI (partido-máquina) no se mueve; el PRD se desordena tras la
+          irrupción de MORENA
+  \end{itemize}
+
+  \vspace{0.3em}
+  {\footnotesize \textcolor{ITAMgray}{%
+    Conjetural: el primer diferencial confunde la reforma con el realineamiento
+    de 2018, y el segundo —que debía separarlos— carece de potencia.}}
+
+\end{frame}
+
+% ── 3.4 — tabla por partido + densidad ────────────────────────────────────────
+\begin{frame}{Doble diferencial por partido y prueba de densidad}
+
+  \begin{columns}[T]
+    \column{0.56\textwidth}
+    {\small Doble diferencial $\hat{\tau}$}
+    \begin{table}\centering\footnotesize
+      \begin{tabular}{lccc}
+        \toprule
+         & PRI & PAN & PRD \\
+        \midrule
+        Mayor único  & $-0.005$ & $-0.336$ & $-0.183$ \\
+                     & $(0.048)$ & $(0.036)$ & $(0.037)$ \\
+        Partido puro & $0.082$ & $-0.356^{*}$ & $-0.176$ \\
+                     & $(0.073)$ & $(0.035)$ & $(0.036)$ \\
+        \bottomrule
+      \end{tabular}
+    \end{table}
+
+    \column{0.40\textwidth}
+    {\small Densidad (McCrary)}
+    \begin{table}\centering\footnotesize
+      \begin{tabular}{lc}
+        \toprule
+        Partido & $p$ \\
+        \midrule
+        PRI & $0.376$ \\
+        PAN & \textcolor{ITAMmaroon}{$0.010$} \\
+        PRD & $0.776$ \\
+        \bottomrule
+      \end{tabular}
+    \end{table}
+  \end{columns}
+
+  \vspace{0.4em}
+  \begin{itemize}
+    \item La densidad \textcolor{ITAMmaroon}{rechaza} la continuidad para el PAN:
+          posible \emph{sorting}; su resultado se lee con reserva
+    \item $\hat{\tau}$ es sensible al ancho de banda ($-0.013$ a $+0.062$ entre
+          $0.5h$ y $2h$): no se asienta en un signo
+  \end{itemize}
+
+  \vspace{0.2em}
+  {\footnotesize \textcolor{ITAMgray}{$^{*}\,p<0.10$; SE entre paréntesis;
+    $p$ por \emph{wild cluster bootstrap}.}}
+
+\end{frame}
+
+% ── 3.5 — MORENA ──────────────────────────────────────────────────────────────
+\begin{frame}{Exploración: MORENA, el partido dominante}
+
+  \begin{itemize}
+    \item Como incumbente, MORENA aparece solo desde 2018
+          (\textcolor{ITAMmaroon}{1{,}117 de 1{,}186} observaciones en
+          \emph{treated-post}, ninguna pre-reforma)
+    \item El doble diferencial es \emph{inestimable}: un partido nacido tras la
+          reforma no tiene un ``antes'' que sirva de contrafactual
+    \item Lo identificable —el nivel de su discontinuidad en el régimen
+          reformado— es \textcolor{ITAMmaroon}{negativo}: $-0.050$ ($p=0.035$)
+          en la muestra completa; $-0.048$ en \emph{treated-post}
+          (\emph{bootstrap} $p=0.083$)
+    \item Ni la hegemonía nacional ni los \emph{coattails} eximen a MORENA de la
+          maldición municipal —pero el resultado no es atribuible a la reforma
+  \end{itemize}
+
+\end{frame}
+
+% ══════════════════════════════════════════════════════════════════════════════
+\section{Conclusión}
+% ══════════════════════════════════════════════════════════════════════════════
+{
+\setbeamercolor{background canvas}{bg=ITAMlightgray}
+\begin{frame}[plain, noframenumbering]
+  \vfill
+  \begin{center}
+    \textcolor{ITAMgreen}{\Large\bfseries Conclusión}\\[0.5em]
+    \textcolor{ITAMgray}{\normalsize Qué permite y qué no permite concluir}
+  \end{center}
+  \vfill
+\end{frame}
+}
+
+% ── 4.1 — conclusiones ────────────────────────────────────────────────────────
+\begin{frame}{Conclusiones}
+
+  \begin{itemize}
+    \item El efecto institucional de la reelegibilidad, neto de la autoselección
+          del alcalde, \textcolor{ITAMmaroon}{no se identifica con precisión
+          útil} en 2018--2024
+    \item No hay evidencia robusta de que la reforma restaurara la rendición de
+          cuentas partidista municipal; el único indicio —el PAN— es no
+          significativo e inseparable del realineamiento
+    \item Diálogo con Magar (2026): donde él ve reversión \emph{cuando el alcalde
+          contiende}, el efecto promedio de la \emph{mera disponibilidad} de la
+          regla no desplaza la ventaja del partido
+    \item Limitación dirimente: \textcolor{ITAMmaroon}{dos estados de control};
+          fortalezas: balance satisfecho, \emph{wild bootstrap}, atribución de
+          coaliciones depurada
+  \end{itemize}
+
+\end{frame}
+
+% ── 4.2 — política pública ────────────────────────────────────────────────────
+\begin{frame}{Implicación de política pública}
+
+  \begin{block}{La contrarreforma de 2030}
+    La restitución de la prohibición no sacrifica una ganancia de rendición de
+    cuentas \emph{demostrada} —aquí no se acredita—, mas tampoco puede ampararse
+    en evidencia de que la reelección fuese inocua: el diseño no descarta efectos
+    sustantivos.
+  \end{block}
+
+  \vspace{0.4em}
+  \begin{itemize}
+    \item Como advierte Magar, la contrarreforma \emph{clausura el experimento}:
+          cancela el horizonte de datos que habría permitido dirimirlo
+    \item \textcolor{ITAMgreen}{Trabajo futuro}: ampliar el contrafactual con
+          unidades aún-no-tratadas; usar la probabilidad de retención como
+          desenlace; explorar la heterogeneidad seccional con un RDD basado en
+          aleatorización
+  \end{itemize}
+
+  \vspace{0.5em}
+  \centering
+  {\large \textcolor{ITAMgreen}{Gracias. ¿Preguntas?}}
+
+\end{frame}
+
+% ══════════════════════════════════════════════════════════════════════════════
+% APÉNDICE
+% ══════════════════════════════════════════════════════════════════════════════
+\appendix
+
+\begin{frame}[plain, noframenumbering]
+  \centering
+  \vfill
+  {\Large \textcolor{ITAMgreen}{\bfseries Apéndice}}
+  \vfill
+\end{frame}
+
+% ── A1 — composición de la muestra ────────────────────────────────────────────
+\begin{frame}[noframenumbering]{A1. Composición de la muestra por celda}
+
+  \begin{table}\centering\small
+    \begin{tabular}{lrrr}
+      \toprule
+      Celda & $N$ obs. & Municipios & Estados \\
+      \midrule
+      Tratados, pre-reforma            & 23{,}084 & 1{,}649 & 27 \\
+      Tratados, post-reforma           & 7{,}990  & 1{,}579 & 26 \\
+      Control (HGO+VER), pre-2018      & 3{,}658  & 296     & 2  \\
+      Control (HGO+VER), desde 2018    & 746      & 293     & 2  \\
+      \bottomrule
+    \end{tabular}
+  \end{table}
+
+  \vspace{0.3em}
+  {\footnotesize \textcolor{ITAMgray}{%
+    Panel apilado (ganador + segundo lugar). Excluye CDMX, Nayarit y Tlaxcala.
+    La escasez de las dos últimas filas es la limitación central del diseño.}}
+
+\end{frame}
+
+% ── A2 — MORENA ───────────────────────────────────────────────────────────────
+\begin{frame}[noframenumbering]{A2. MORENA: discontinuidad post-reforma}
+
+  \begin{table}\centering\small
+    \begin{tabular}{lccc}
+      \toprule
+      Especificación & $\beta$ (salto) & (SE) & $N$ \\
+      \midrule
+      Mayor único (todo)              & $-0.050^{**}$ & $(0.024)$ & 674 \\
+      \quad celda \emph{treated-post} & $-0.048^{*}$  & $(0.025)$ & 639 \\
+      Partido puro (sin coalición)    & $-0.032$      & $(0.030)$ & 451 \\
+      \bottomrule
+    \end{tabular}
+  \end{table}
+
+  \vspace{0.3em}
+  {\footnotesize \textcolor{ITAMgray}{%
+    \textit{No} es el efecto causal de la reforma: el doble diferencial es
+    inestimable por falta de observaciones pre-reforma. $p$ de \emph{treated-post}
+    por \emph{wild cluster bootstrap}. $^{**}\,p<0.05$, $^{*}\,p<0.10$.}}
+
+\end{frame}
+
+% ── A3 — nota sobre inferencia ────────────────────────────────────────────────
+\begin{frame}[noframenumbering]{A3. Nota sobre inferencia}
+
+  \begin{itemize}
+    \item El tratamiento se decide a nivel estatal: la variación efectiva vive
+          en $\approx 29$ conglomerados
+    \item Con pocos conglomerados, los SE asintóticos son poco confiables; se
+          acompañan con \emph{wild cluster bootstrap} (Rademacher, $B = 9{,}999$)
+    \item La densidad de Cattaneo, Jansson y Ma (2020) se corre por partido sobre
+          el margen firmado del partido focal, no sobre el panel apilado
+          (simétrico por construcción)
+    \item El balance trata covariables \emph{predeterminadas} (voto incumbente
+          rezagado, estructura municipal de 2010) como desenlaces ficticios
+  \end{itemize}
+
+\end{frame}
+
+\end{document}

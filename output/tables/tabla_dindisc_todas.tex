@@ -1,0 +1,22 @@
+% Tabla DinDisc (doble diferencial, 4 discontinuidades) — todas las elecciones
+% Generado por 02_dindisc_todas.R
+\begin{tabular}{lcc}
+\toprule
+ & Pre-reforma & Post-reforma \\
+\midrule
+Tratados ($\hat{\beta}$)        & 0.0101 & 0.0322 \\
+                                  & (0.0147) & (0.0216) \\
+Control HGO+VER ($\hat{\beta}$) & 0.0352 & 0.0717 \\
+                                  & (0.0432) & (0.0225) \\
+\midrule
+1er diferencial (tratados)        & \multicolumn{2}{c}{0.0306 \;(0.0217)} \\
+2\textsuperscript{o} diferencial (control) & \multicolumn{2}{c}{0.0221 \;(0.0266)} \\
+\textbf{$\hat{\tau}$ doble diferencial}   & \multicolumn{2}{c}{\textbf{0.0085} \;(0.0343)} \\
+\bottomrule
+\multicolumn{3}{p{0.85\textwidth}}{\footnotesize \textit{Nota:} $\hat{\beta}$ por celda:
+  RDD local-lineal, kernel triangular, $h$ MSE-óptimo (Calonico, Cattaneo y Titiunik 2014),
+  SE bias-corrected. $\hat{\tau}=\beta_{D:POST:TR}$ de la regresión local-lineal saturada
+  dentro de $|m|\le 0.115$; SE clustered por estado; $p$ por wild cluster bootstrap
+  Rademacher ($B=9999$). Control \textit{never-treated}: Hidalgo y Veracruz.
+  $^{*}p<0.10$, $^{**}p<0.05$, $^{***}p<0.01$.}
+\end{tabular}
