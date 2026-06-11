@@ -1,7 +1,7 @@
 # ══════════════════════════════════════════════════════════════════════════════
 # Script: 00_master.R
 # Proyecto: El municipio y la reelección
-# Autores:  Emiliano Miranda González y Fausto Barajas Rangel
+# Autores:  Emiliano Miranda González
 # ITAM — Primavera 2026
 # Fecha:    2026-05-25
 # ══════════════════════════════════════════════════════════════════════════════
@@ -77,7 +77,7 @@ t_inicio <- proc.time()
 cat("\n")
 cat("══════════════════════════════════════════════════════════════════════════\n")
 cat("  PIPELINE REPLICACIÓN: Reelección Municipal y Ventaja del Incumbente\n")
-cat("  ITAM — Emiliano Miranda González y Fausto Barajas Rangel\n")
+cat("  ITAM — Emiliano Miranda González\n")
 cat("  Inicio:", format(Sys.time(), "%Y-%m-%d %H:%M:%S"), "\n")
 cat("══════════════════════════════════════════════════════════════════════════\n\n")
 
